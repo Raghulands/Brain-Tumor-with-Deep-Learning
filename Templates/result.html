@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Yu+Gothic+UI+Light&display=swap');
+        
+        body {
+            font-family: 'Yu Gothic UI Light', sans-serif;
+            background: url('/static/images/kk.png') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #e84a8b;
+        }
+        .container {
+            background: rgba(240, 230, 255, 0.9);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1.2s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        h1 {
+            color: #c13584;
+            font-size: 32px;
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        h1:hover {
+            transform: scale(1.05);
+        }
+        .result-box {
+            background: #e84a8b;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 30px; 
+            width: 100%;
+        }
+        .home-button {
+            background: none;
+            color: #e84a8b;
+            font-size: 18px;
+            cursor: pointer;
+            border: 2px solid #e84a8b;
+            padding: 12px 20px;
+            border-radius: 25px;
+            transition: 0.3s;
+            width: 100%;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        .home-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #e84a8b;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease-in-out;
+            z-index: -1;
+        }
+        .home-button:hover::before {
+            transform: scaleX(1);
+        }
+        .home-button:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Prediction Result</h1>
+        <div class="result-box">
+            Predicted class: {{ predicted_class }}
+        </div>
+        <a href="/" class="home-button">← Back to Home</a>
+    </div>
+</body>
+</html>
